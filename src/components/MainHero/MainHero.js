@@ -4,15 +4,16 @@ import './MainHero.css'
 import animals from '../../assets/images'
 import {Container} from 'reactstrap'
 
-function MainHero() {
-  const {loading, error, data} = useQuery(gql`
-    {
-      mainCards {
-        title
-        image
-      }
+const FETCH_MAIN_CARDS = gql`
+  {
+    mainCards {
+      title
+      image
     }
-  `)
+  }
+`
+function MainHero() {
+  const {loading, error, data} = useQuery(FETCH_MAIN_CARDS)
 
   if (loading) return <div>loading...</div>
   if (error) return <div>error has occurred</div>
